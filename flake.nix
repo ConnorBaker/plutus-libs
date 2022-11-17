@@ -37,18 +37,20 @@
         ;
     in {
       devShells.default = pkgs.mkShell {
-        buildInputs =
+        packages =
           (with pkgs; [
             cvc4
             libsodium
             lzma
             pkg-config
             zlib
+            zsh
           ])
           ++ [ghc cabal-install cabal-cache];
-          shellHook = ''
-            exec ${pkgs.zsh}/bin/zsh
-          '';
+        shellHook = ''
+          export SHELL=${pkgs.zsh}/bin/zsh
+          exec $SHELL
+        '';
       };
       formatter = pkgs.alejandra;
     });
