@@ -46,6 +46,9 @@
             zlib
           ])
           ++ [ghc cabal-install cabal-cache];
+          shellHook = ''
+            exec ${pkgs.zsh}/bin/zsh
+          '';
       };
       formatter = pkgs.alejandra;
     });
