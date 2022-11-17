@@ -44,13 +44,8 @@
             lzma
             pkg-config
             zlib
-            zsh
           ])
           ++ [ghc cabal-install cabal-cache];
-        shellHook = ''
-          export SHELL=${pkgs.zsh}/bin/zsh
-          exec $SHELL
-        '';
       };
       formatter = pkgs.alejandra;
     });
